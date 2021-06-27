@@ -10,6 +10,7 @@
         5.2如果等于，返回测试数据
 '''
 import xlrd,os
+from common.logs import logger
 
 class ReadExcel():
 
@@ -18,6 +19,7 @@ class ReadExcel():
         re = xlrd.open_workbook(file_path)
         self.sheet = re.sheet_by_index(0)
         self.rows = self.sheet.nrows
+        logger.debug(self.rows)
 
     def getData(self,className,methodName):
         '''
@@ -32,9 +34,9 @@ class ReadExcel():
             if c_name == className and m_name == methodName:
                 testData = self.sheet.cell(i,2).value
                 return testData
-            else:
-                return ''
+        else:
+            return ''
 
 if __name__ == '__main__':
     re = ReadExcel()
-    print(re.getData('HomeTest','test_send_little_message'))
+    print(re.getData('HomeTest','test_search_nomal'))

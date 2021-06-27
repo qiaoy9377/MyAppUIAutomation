@@ -13,6 +13,8 @@
     6-定义右滑方法
         同3，仅调整坐标
 '''
+from appium.webdriver.common.touch_action import TouchAction
+
 from common.driver import Driver
 import unittest,time
 
@@ -57,10 +59,18 @@ class Public():
         x2 = int(x*0.75)
         self.driver.swipe(x1,y1,x2,y1,duration=1000)
 
+    def clickScreen(self):
+        x,y = self.getSize()
+        x1 = int(x*0.5)
+        y1 = int(y*0.5)
+        self.driver.tap([(x1,y1)],duration=1000)
+
+
 if __name__ == '__main__':
     p = Public()
     print(p.getSize())
-    p.swipeUp()
-    p.swipeDown()
-    p.swipeLeft()
-    p.swipeRight()
+    # p.swipeUp()
+    # p.swipeDown()
+    # p.swipeLeft()
+    # p.swipeRight()
+    # p.clickScreen()

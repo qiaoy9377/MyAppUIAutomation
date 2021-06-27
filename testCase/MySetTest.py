@@ -9,7 +9,7 @@
 import unittest,time
 
 from selenium.webdriver.common.by import By
-
+from PO.mySetPage import MySetPage
 from common.myTest import Mytest
 
 class MySetTest(Mytest):
@@ -17,7 +17,9 @@ class MySetTest(Mytest):
     def test_myset_page(self):
         try:
             time.sleep(5)
-            self.driver.find_elements(By.CLASS_NAME,'android.widget.RelativeLayout')[4].click()
+            # self.driver.find_elements(By.CLASS_NAME,'android.widget.RelativeLayout')[4].click()
+            msp = MySetPage(self.driver)
+            msp.mySetClick()
             time.sleep(1)
             assert str(self.driver.page_source).find('常用') != -1 ,print('断言失败')
         except Exception as msg:
@@ -26,9 +28,13 @@ class MySetTest(Mytest):
     def test_myset_page_message(self):
         try:
             time.sleep(5)
-            self.driver.find_elements(By.CLASS_NAME,'android.widget.RelativeLayout')[4].click()
-            time.sleep(1)
-            self.driver.find_elements(By.CLASS_NAME,'android.widget.RelativeLayout')[0].click()
+            # self.driver.find_elements(By.CLASS_NAME,'android.widget.RelativeLayout')[4].click()
+            # time.sleep(1)
+            # self.driver.find_elements(By.CLASS_NAME,'android.widget.RelativeLayout')[0].click()
+            msp = MySetPage(self.driver)
+            msp.mySetClick()
+            msp.myCreat()
+            time.sleep(2)
             assert str(self.driver.page_source).find('内容审核通知') != -1 ,print('断言失败')
         except Exception as msg:
             print('执行错误',msg)

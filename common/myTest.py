@@ -10,11 +10,14 @@ from common.driver import Driver
 
 class Mytest(unittest.TestCase):
 
+    # 实例化app启动类，调用启动app函数
+    d = Driver()
+    driver = d.startUp()
+
     @classmethod
     def setUpClass(cls) -> None:
-        #实例化app启动类，调用启动app函数
-        d = Driver()
-        cls.driver = d.startUp()
+        pass
+
 
     def setUp(self) -> None:
         pass
@@ -24,8 +27,7 @@ class Mytest(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls) -> None:
-        #关闭app
-        cls.driver.quit()
+        pass
 
 if __name__ == '__main__':
     mt = Mytest()
